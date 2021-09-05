@@ -20,11 +20,10 @@ public class SmartRadio {
         currentNumberRadio = newNumber;
     }
 
-    public int getCurrentNumberRadio() {
+    public int getCurrentNumberRadio()
+    {
         return currentNumberRadio;
     }
-
-
 
 
 
@@ -37,12 +36,8 @@ public class SmartRadio {
         if (newVolume > maxVolume) {
             return;
         }
-        if (newVolume < maxVolume && newVolume >minVolume) {
-            newVolume = newVolume + 1;
-        }
-        currentVolume = newVolume;
+        currentVolume = newVolume +1;
     }
-
 
 
     public int getCurrentVolume() {
