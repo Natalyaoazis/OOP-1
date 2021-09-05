@@ -7,9 +7,8 @@ import static org.junit.jupiter.api.Assertions.*;
 class SmartRadioTest {
 
 
-
     @Test
-    void shouldSetCurrentTemperature() {
+    void shouldSetCurrentNumberRadio() {
         SmartRadio smart = new SmartRadio();
         smart.setCurrentNumberRadio(4);
 
@@ -20,7 +19,7 @@ class SmartRadioTest {
     }
 
     @Test
-    void shouldSetCurrentTemperatureMoreMax() {
+    void shouldSetCurrentNumberMoreMax() {
         SmartRadio smart = new SmartRadio();
         smart.setCurrentNumberRadio(15);
 
@@ -31,7 +30,7 @@ class SmartRadioTest {
     }
 
     @Test
-    void shouldSetCurrentTemperatureLessMin() {
+    void shouldSetCurrentNumberLessMin() {
         SmartRadio smart = new SmartRadio();
         smart.setCurrentNumberRadio(-5);
 
@@ -41,12 +40,15 @@ class SmartRadioTest {
         assertEquals(expected, actual);
     }
 
+
+
+
     @Test
     void shouldSetCurrentVolume() {
         SmartRadio smart = new SmartRadio();
-        smart.setCurrentVolume(8);
+        smart.setCurrentVolume(3);
 
-        int expected = 9;
+        int expected = 4;
         int actual = smart.getCurrentVolume();
 
         assertEquals(expected, actual);
@@ -66,11 +68,14 @@ class SmartRadioTest {
     @Test
     void shouldSetCurrentVolumeLessMin() {
         SmartRadio smart = new SmartRadio();
-        smart.setCurrentVolume(-56);
+        smart.setCurrentVolume(-52);
 
         int expected = 0;
         int actual = smart.getCurrentVolume();
 
         assertEquals(expected, actual);
     }
+
+
+
 }

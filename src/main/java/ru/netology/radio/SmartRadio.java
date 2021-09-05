@@ -37,16 +37,16 @@ public class SmartRadio {
         if (newVolume > maxVolume) {
             return;
         }
-        if (newVolume > minVolume && newVolume < maxVolume) {
+        if (newVolume < maxVolume && newVolume >minVolume) {
             newVolume = newVolume + 1;
         }
         currentVolume = newVolume;
     }
 
+
+
     public int getCurrentVolume() {
         return currentVolume;
     }
-
-
 
 }

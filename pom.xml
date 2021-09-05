@@ -39,14 +39,14 @@
                 <version>0.8.5</version>
                 <executions>
                     <execution>
-                        <id>prepare-agent-987987984984</id>
+                        <id>prepare-agent-98798987984984</id>
                         <phase>initialize</phase>
                         <goals>
                             <goal>prepare-agent</goal>
                         </goals>
                     </execution>
                     <execution>
-                        <id>report-445566</id>
+                        <id>report-44655566</id>
                         <phase>verify</phase>
                         <goals>
                             <goal>report</goal>
@@ -64,9 +64,9 @@
                         <rule>
                             <limits>
                                 <limit>
-                                    <counter>INSTRUCTION</counter>
+                                    <counter>BRANCH</counter>
                                     <value>COVEREDRATIO</value>
-                                    <minimum>100%</minimum>
+                                    <minimum>85%</minimum>
                                 </limit>
                             </limits>
                         </rule>
