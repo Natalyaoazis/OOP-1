@@ -12,7 +12,7 @@ class SmartRadioTest {
         SmartRadio smart = new SmartRadio();
         smart.setCurrentNumberRadio(4);
 
-        int expected = 5;
+        int expected = 4;
         int actual = smart.getCurrentNumberRadio();
 
         assertEquals(expected, actual);
@@ -41,6 +41,30 @@ class SmartRadioTest {
     }
 
 
+    @Test
+    void shouldIncreaseNumberRadio() {
+        SmartRadio smart = new SmartRadio();
+        smart.setCurrentNumberRadio(5);
+        smart.increaseNumberRadio();
+
+        int expected = 6;
+        int actual = smart.getCurrentNumberRadio();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void shouldReduceNumberRadio() {
+        SmartRadio smart = new SmartRadio();
+        smart.setCurrentNumberRadio(5);
+        smart.reduceNumberRadio();
+
+        int expected = 4;
+        int actual = smart.getCurrentNumberRadio();
+
+        assertEquals(expected, actual);
+    }
+
 
 
     @Test
@@ -48,7 +72,7 @@ class SmartRadioTest {
         SmartRadio smart = new SmartRadio();
         smart.setCurrentVolume(3);
 
-        int expected = 4;
+        int expected = 3;
         int actual = smart.getCurrentVolume();
 
         assertEquals(expected, actual);
@@ -76,7 +100,27 @@ class SmartRadioTest {
         assertEquals(expected, actual);
     }
 
+    @Test
+    void shouldIncreaseVolume() {
+        SmartRadio smart = new SmartRadio();
+        smart.setCurrentVolume(6);
+        smart.increaseVolume();
 
+        int expected = 7;
+        int actual = smart.getCurrentVolume();
 
+        assertEquals(expected, actual);
+    }
 
+    @Test
+    void shouldReduceVolume() {
+        SmartRadio smart = new SmartRadio();
+        smart.setCurrentVolume(6);
+        smart.reduceVolume();
+
+        int expected = 5;
+        int actual = smart.getCurrentVolume();
+
+        assertEquals(expected, actual);
+    }
 }

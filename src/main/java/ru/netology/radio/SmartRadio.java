@@ -14,17 +14,21 @@ public class SmartRadio {
         if (newNumber > maxNumberRadio) {
             newNumber = minNumberRadio;
         }
-        if (newNumber > minNumberRadio && newNumber < maxNumberRadio) {
-            newNumber = newNumber + 1;
-        }
         currentNumberRadio = newNumber;
     }
 
-    public int getCurrentNumberRadio()
-    {
+    public void increaseNumberRadio() {
+        currentNumberRadio = currentNumberRadio + 1;
+        }
+
+
+    public void reduceNumberRadio() {
+        currentNumberRadio = currentNumberRadio - 1;
+        }
+
+    public int getCurrentNumberRadio() {
         return currentNumberRadio;
     }
-
 
 
     public void setCurrentVolume(int newVolume) {
@@ -36,9 +40,16 @@ public class SmartRadio {
         if (newVolume > maxVolume) {
             return;
         }
-        currentVolume = newVolume +1;
+        currentVolume = newVolume;
     }
 
+    public void increaseVolume() {
+        currentVolume = currentVolume + 1;
+        }
+
+    public void reduceVolume() {
+        currentVolume = currentVolume +-1;
+        }
 
     public int getCurrentVolume() {
         return currentVolume;
