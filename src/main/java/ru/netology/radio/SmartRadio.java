@@ -19,12 +19,12 @@ public class SmartRadio {
 
     public void increaseNumberRadio() {
         currentNumberRadio = currentNumberRadio + 1;
-        }
+    }
 
 
     public void reduceNumberRadio() {
         currentNumberRadio = currentNumberRadio - 1;
-        }
+    }
 
     public int getCurrentNumberRadio() {
         return currentNumberRadio;
@@ -45,11 +45,12 @@ public class SmartRadio {
 
     public void increaseVolume() {
         currentVolume = currentVolume + 1;
-        }
+    }
 
     public void reduceVolume() {
-        currentVolume = currentVolume +-1;
-        }
+        currentVolume = currentVolume - 1;
+
+    }
 
     public int getCurrentVolume() {
         return currentVolume;

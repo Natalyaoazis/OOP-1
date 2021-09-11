@@ -66,7 +66,6 @@ class SmartRadioTest {
     }
 
 
-
     @Test
     void shouldSetCurrentVolume() {
         SmartRadio smart = new SmartRadio();
@@ -123,4 +122,6 @@ class SmartRadioTest {
 
         assertEquals(expected, actual);
     }
+
+
 }
