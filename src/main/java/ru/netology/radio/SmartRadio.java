@@ -3,18 +3,22 @@ package ru.netology.radio;
 public class SmartRadio {
     private int currentNumberRadio;
     private int currentVolume;
+    private int minNumberRadio = 0;
+    private int maxNumberRadio = 9;
+    private int minVolume = 0;
+    private int maxVolume = 10;
 
 
-    public void setCurrentNumberRadio(int newNumber) {
-        int minNumberRadio = 0;
-        int maxNumberRadio = 9;
-        if (newNumber < minNumberRadio) {
-            newNumber = maxNumberRadio;
+    public void setCurrentNumberRadio(int currentNumberRadio) {
+        if (currentNumberRadio < minNumberRadio) {
+            this.currentNumberRadio = maxNumberRadio;
+            return;
         }
-        if (newNumber > maxNumberRadio) {
-            newNumber = minNumberRadio;
+        if (currentNumberRadio > maxNumberRadio) {
+            this.currentNumberRadio = minNumberRadio;
+            return;
         }
-        currentNumberRadio = newNumber;
+        this.currentNumberRadio = currentNumberRadio;
     }
 
     public void increaseNumberRadio() {
@@ -40,16 +44,19 @@ public class SmartRadio {
         if (newVolume > maxVolume) {
             return;
         }
-        currentVolume = newVolume;
+        this.currentVolume = newVolume;
     }
 
     public void increaseVolume() {
-        currentVolume = currentVolume + 1;
+        if (currentVolume < 10) {
+            currentVolume = currentVolume + 1;
+        }
     }
 
     public void reduceVolume() {
-        currentVolume = currentVolume - 1;
-
+        if(currentVolume > 0) {
+            currentVolume = currentVolume - 1;
+        }
     }
 
     public int getCurrentVolume() {

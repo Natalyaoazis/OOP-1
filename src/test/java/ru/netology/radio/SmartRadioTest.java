@@ -110,6 +110,18 @@ class SmartRadioTest {
 
         assertEquals(expected, actual);
     }
+    @Test
+    void shouldIncreaseVolumeMax() {
+        SmartRadio smart = new SmartRadio();
+        smart.setCurrentVolume(10);
+        smart.increaseVolume();
+
+        int expected = 10;
+        int actual = smart.getCurrentVolume();
+
+        assertEquals(expected, actual);
+    }
+
 
     @Test
     void shouldReduceVolume() {
@@ -118,6 +130,17 @@ class SmartRadioTest {
         smart.reduceVolume();
 
         int expected = 5;
+        int actual = smart.getCurrentVolume();
+
+        assertEquals(expected, actual);
+    }
+    @Test
+    void shouldReduceVolumeMin() {
+        SmartRadio smart = new SmartRadio();
+        smart.setCurrentVolume(0);
+        smart.reduceVolume();
+
+        int expected = 0;
         int actual = smart.getCurrentVolume();
 
         assertEquals(expected, actual);
