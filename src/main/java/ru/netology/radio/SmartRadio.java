@@ -22,22 +22,35 @@ public class SmartRadio {
     }
 
     public void increaseNumberRadio() {
-        currentNumberRadio = currentNumberRadio + 1;
+        if (currentNumberRadio<maxNumberRadio) {
+            this.currentNumberRadio = currentNumberRadio + 1;
+        }
+        else {
+            this.currentNumberRadio = minNumberRadio;
+        }
     }
 
 
     public void reduceNumberRadio() {
-        currentNumberRadio = currentNumberRadio - 1;
+        if (currentNumberRadio>minNumberRadio) {
+            this.currentNumberRadio = currentNumberRadio - 1;
+        } else {
+            currentNumberRadio = maxNumberRadio;
+        }
     }
 
     public int getCurrentNumberRadio() {
         return currentNumberRadio;
     }
+    public int getMaxNumberRadio() {
+        return maxNumberRadio;
+    }
+    public int getMinNumberRadio() {
+        return minNumberRadio;
+    }
 
 
     public void setCurrentVolume(int newVolume) {
-        int minVolume = 0;
-        int maxVolume = 10;
         if (newVolume < minVolume) {
             return;
         }

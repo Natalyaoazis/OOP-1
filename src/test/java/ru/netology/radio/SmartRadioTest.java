@@ -19,28 +19,33 @@ class SmartRadioTest {
     }
 
     @Test
-    void shouldSetCurrentNumberMoreMax() {
+    void shouldSetCurrentNumberMax() {
         SmartRadio smart = new SmartRadio();
-        smart.setCurrentNumberRadio(15);
-
-        int expected = 0;
-        int actual = smart.getCurrentNumberRadio();
-
-        assertEquals(expected, actual);
+        smart.setCurrentNumberRadio(smart.getMaxNumberRadio());
+        assertEquals(9, smart.getCurrentNumberRadio());
     }
 
     @Test
-    void shouldSetCurrentNumberLessMin() {
+    void shouldSetCurrentNumberMin() {
         SmartRadio smart = new SmartRadio();
-        smart.setCurrentNumberRadio(-5);
-
-        int expected = 9;
-        int actual = smart.getCurrentNumberRadio();
-
-        assertEquals(expected, actual);
+        smart.setCurrentNumberRadio(smart.getMinNumberRadio());
+        assertEquals(0, smart.getCurrentNumberRadio());
     }
 
 
+    @Test
+    void shouldIncreaseNumberRadioMoreMax() {
+        SmartRadio smart = new SmartRadio();
+        smart.setCurrentNumberRadio(11);
+        assertEquals(0, smart.getCurrentNumberRadio());
+    }
+
+    @Test
+    void shouldIncreaseNumberRadioLessMin() {
+        SmartRadio smart = new SmartRadio();
+        smart.setCurrentNumberRadio(-15);
+        assertEquals(9, smart.getCurrentNumberRadio());
+    }
     @Test
     void shouldIncreaseNumberRadio() {
         SmartRadio smart = new SmartRadio();
@@ -54,12 +59,50 @@ class SmartRadioTest {
     }
 
     @Test
+    void shouldIncreaseNumberRadiMax() {
+        SmartRadio smart = new SmartRadio();
+        smart.setCurrentNumberRadio(9);
+        smart.increaseNumberRadio();
+
+        int expected = 0;
+        int actual = smart.getCurrentNumberRadio();
+
+        assertEquals(expected, actual);
+    }
+
+
+
+    @Test
     void shouldReduceNumberRadio() {
         SmartRadio smart = new SmartRadio();
         smart.setCurrentNumberRadio(5);
         smart.reduceNumberRadio();
 
         int expected = 4;
+        int actual = smart.getCurrentNumberRadio();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void shouldReduceNumberRadioMax() {
+        SmartRadio smart = new SmartRadio();
+        smart.setCurrentNumberRadio(9);
+        smart.reduceNumberRadio();
+
+        int expected = 8;
+        int actual = smart.getCurrentNumberRadio();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void shouldReduceNumberRadioMin() {
+        SmartRadio smart = new SmartRadio();
+        smart.setCurrentNumberRadio(0);
+        smart.reduceNumberRadio();
+
+        int expected = 9;
         int actual = smart.getCurrentNumberRadio();
 
         assertEquals(expected, actual);
