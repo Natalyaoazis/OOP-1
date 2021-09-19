@@ -7,13 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class SmartRadioTest {
     SmartRadio smart = new SmartRadio();
 
-    @Test
-    public void shouldSetCountOfRadioStations() {
-        smart.setCountRadioStation(99);
-        assertEquals(99, smart.getCountRadioStation());
-    }
-
-    @Test
+        @Test
     void shouldSetCurrentNumberRadio() {
        smart.setCurrentNumberRadio(4);
 
