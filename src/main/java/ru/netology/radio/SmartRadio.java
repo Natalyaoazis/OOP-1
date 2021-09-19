@@ -4,7 +4,7 @@ public class SmartRadio {
     private int currentNumberRadio;
     private int currentVolume;
     private int minNumberRadio = 0;
-    private int maxNumberRadio = 9;
+    private int maxNumberRadio = 10;
     private int minVolume = 0;
     private int maxVolume = 10;
 
