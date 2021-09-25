@@ -1,5 +1,11 @@
 package ru.netology.radio;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+
+
 public class SmartRadio {
     private int currentNumberRadioByDefault;
     private int currentVolume;
@@ -7,16 +13,27 @@ public class SmartRadio {
     private int maxNumberRadioByDefault = 9;
     private int minVolume = 0;
     private int maxVolume = 100;
-    private int countRadioStation;
+    private int countRadioStation = 100;
+    private int maxNumberRadioStation = countRadioStation-1;
     private int currentNumberRadioByHand;
 
     public SmartRadio() {
     }
 
-    public SmartRadio(int minNumberRadio, int countRadioStation, int currentNumberRadioByHand) {
+    public SmartRadio(int currentNumberRadioByDefault, int currentVolume, int minNumberRadio, int maxNumberRadioByDefault, int minVolume, int maxVolume, int countRadioStation, int currentNumberRadioByHand) {
+        this.currentNumberRadioByDefault = currentNumberRadioByDefault;
+        this.currentVolume = currentVolume;
         this.minNumberRadio = minNumberRadio;
+        this.maxNumberRadioByDefault = maxNumberRadioByDefault;
+        this.minVolume = minVolume;
+        this.maxVolume = maxVolume;
         this.countRadioStation = countRadioStation;
         this.currentNumberRadioByHand = currentNumberRadioByHand;
+    }
+
+    public SmartRadio(int currentNumberRadioByDefault, int maxNumberRadioByDefault) {
+        this.currentNumberRadioByDefault = currentNumberRadioByDefault;
+        this.maxNumberRadioByDefault = maxNumberRadioByDefault;
     }
 
     public int getCountRadioStation() {
@@ -37,7 +54,7 @@ public class SmartRadio {
 
     public void increaseNumberRadioByHand() {
         if (currentNumberRadioByHand>minNumberRadio) {
-        this.currentNumberRadioByHand = currentNumberRadioByHand +1;
+        this.currentNumberRadioByHand = currentNumberRadioByHand+1;
         }
     }
 
@@ -46,10 +63,7 @@ public class SmartRadio {
         if (currentNumberRadioByHand>countRadioStation) {
             this.currentNumberRadioByHand = minNumberRadio;
         }
-        else {
-            currentNumberRadioByHand = currentNumberRadioByHand+1;
         }
-    }
 
     public void reduceNumberRadioByHand() {
         if (currentNumberRadioByHand>minNumberRadio) {
@@ -58,7 +72,7 @@ public class SmartRadio {
     }
     public void reduceNumberRadioByHandOver() {
         if (currentNumberRadioByHand<minNumberRadio) {
-            this.currentNumberRadioByHand = countRadioStation;
+            this.currentNumberRadioByHand = maxNumberRadioStation;
         }
     }
 

@@ -5,11 +5,15 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class SmartRadioTest {
-    SmartRadio smart = new SmartRadio();
-
+    @Test
+    public void shouldUseConstructor() {
+        SmartRadio smart = new SmartRadio(9, 5,0, 9,0, 10,100,56);
+        SmartRadio smart1 = new SmartRadio(1,9);
+    }
 
     @Test
     void shouldSetCountOfRadioStations() {
+        SmartRadio smart = new SmartRadio();
         smart.setCountRadioStation(99);
         assertEquals(99, smart.getCountRadioStation());
     }
@@ -17,19 +21,33 @@ class SmartRadioTest {
 
     @Test
     void shouldSetCountOfRadioStationMore() {
+        SmartRadio smart = new SmartRadio();
         smart.setCountRadioStation(99);
         assertEquals(99, smart.getCountRadioStation());
     }
 
     @Test
     void shouldSetCurrentOfRadioStation() {
+        SmartRadio smart = new SmartRadio();
         smart.setCurrentNumberRadioByHand(55);
         assertEquals(55, smart.getCurrentNumberRadioByHand());
     }
 
     @Test
     void shouldIncreaseNumberRadioByHandOver() {
+        SmartRadio smart = new SmartRadio();
         smart.setCurrentNumberRadioByHand(115);
+        smart.increaseNumberRadioByHandOver();
+
+        int expected = 0;
+        int actual = smart.getCurrentNumberRadioByHand();
+
+        assertEquals(expected, actual);
+    }
+    @Test
+    void shouldIncreaseNumberRadioByHandMin() {
+        SmartRadio smart = new SmartRadio();
+        smart.setCurrentNumberRadioByHand(0);
         smart.increaseNumberRadioByHandOver();
 
         int expected = 0;
@@ -41,6 +59,7 @@ class SmartRadioTest {
 
     @Test
     void shouldReduceNumberRadioByHand() {
+        SmartRadio smart = new SmartRadio();
         smart.setCurrentNumberRadioByHand(56);
         smart.reduceNumberRadioByHand();
 
@@ -52,17 +71,19 @@ class SmartRadioTest {
 
     @Test
     void shouldReduceNumberRadioByHandOver() {
+        SmartRadio smart = new SmartRadio();
         smart.setCurrentNumberRadioByHand(-15);
         smart.reduceNumberRadioByHandOver();
 
-        int expected = 0;
-        int actual = smart.getCountRadioStation();
+        int expected = 99;
+        int actual = smart.getCurrentNumberRadioByHand();
 
         assertEquals(expected, actual);
     }
 
     @Test
     void shouldSetCurrentNumberRadio() {
+        SmartRadio smart = new SmartRadio();
         smart.setCurrentNumberRadio(4);
 
         int expected = 4;
@@ -228,6 +249,7 @@ class SmartRadioTest {
 
     @Test
     void shouldIncreaseNumberRadioByHand() {
+        SmartRadio smart = new SmartRadio();
         smart.setCurrentNumberRadioByHand(56);
         smart.increaseNumberRadioByHand();
 
