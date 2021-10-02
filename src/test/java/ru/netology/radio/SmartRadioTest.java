@@ -6,22 +6,29 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class SmartRadioTest {
     @Test
-    public void shouldUseConstructor() {
-        SmartRadio smart = new SmartRadio(9, 5,0, 9,0, 10,100,56);
-        SmartRadio smart1 = new SmartRadio(1,9);
+    public void shouldSetCurrentRadioOverLimit() {
+        SmartRadio smart = new SmartRadio(100);
+        smart.SetCurrentStation(115);
+        assertEquals(0, smart.getCurrentNumberRadioByHand());
     }
 
     @Test
-    void shouldSetCountOfRadioStations() {
-        SmartRadio smart = new SmartRadio();
-        smart.setCountRadioStation(99);
-        assertEquals(99, smart.getCountRadioStation());
+    public void shouldSetCurrentRadio() {
+        SmartRadio smart = new SmartRadio(100);
+        smart.setCurrentNumberRadioByHand(56);
+        assertEquals(56, smart.getCurrentNumberRadioByHand());
     }
 
+    @Test
+    void shouldGetCountOfRadioStationsMin() {
+        SmartRadio smart = new SmartRadio(100);
+        smart.setCountRadioStation(0);
+        assertEquals(0, smart.getCurrentNumberRadioByHand());
+    }
 
     @Test
     void shouldSetCountOfRadioStationMore() {
-        SmartRadio smart = new SmartRadio();
+        SmartRadio smart = new SmartRadio(115);
         smart.setCountRadioStation(99);
         assertEquals(99, smart.getCountRadioStation());
     }
@@ -35,15 +42,16 @@ class SmartRadioTest {
 
     @Test
     void shouldIncreaseNumberRadioByHandOver() {
-        SmartRadio smart = new SmartRadio();
-        smart.setCurrentNumberRadioByHand(115);
-        smart.increaseNumberRadioByHandOver();
+        SmartRadio smart = new SmartRadio(99);
+        smart.setCurrentNumberRadioByHand(0);
+        smart.nextStation();
 
-        int expected = 0;
-        int actual = smart.getCurrentNumberRadioByHand();
+        int expected = 1;
+        int actual = smart.increaseNumberRadio();
 
         assertEquals(expected, actual);
     }
+
     @Test
     void shouldIncreaseNumberRadioByHandMin() {
         SmartRadio smart = new SmartRadio();
@@ -105,18 +113,21 @@ class SmartRadioTest {
         smart.setCurrentNumberRadio(smart.getMinNumberRadio());
         assertEquals(0, smart.getCurrentNumberRadio());
     }
+
     @Test
     void shouldIncreaseNumberRadioMoreMax() {
         SmartRadio smart = new SmartRadio();
         smart.setCurrentNumberRadio(11);
         assertEquals(0, smart.getCurrentNumberRadio());
     }
+
     @Test
     void shouldIncreaseNumberRadioLessMin() {
         SmartRadio smart = new SmartRadio();
         smart.setCurrentNumberRadio(-15);
         assertEquals(9, smart.getCurrentNumberRadio());
     }
+
     @Test
     void shouldIncreaseNumberRadio() {
         SmartRadio smart = new SmartRadio();
@@ -128,6 +139,7 @@ class SmartRadioTest {
 
         assertEquals(expected, actual);
     }
+
     @Test
     void shouldIncreaseNumberRadiMax() {
         SmartRadio smart = new SmartRadio();
@@ -139,6 +151,7 @@ class SmartRadioTest {
 
         assertEquals(expected, actual);
     }
+
     @Test
     void shouldReduceNumberRadio() {
         SmartRadio smart = new SmartRadio();
@@ -150,6 +163,7 @@ class SmartRadioTest {
 
         assertEquals(expected, actual);
     }
+
     @Test
     void shouldReduceNumberRadioMax() {
         SmartRadio smart = new SmartRadio();
@@ -161,6 +175,7 @@ class SmartRadioTest {
 
         assertEquals(expected, actual);
     }
+
     @Test
     void shouldReduceNumberRadioMin() {
         SmartRadio smart = new SmartRadio();
@@ -172,6 +187,7 @@ class SmartRadioTest {
 
         assertEquals(expected, actual);
     }
+
     @Test
     void shouldSetCurrentVolume() {
         SmartRadio smart = new SmartRadio();
@@ -182,6 +198,7 @@ class SmartRadioTest {
 
         assertEquals(expected, actual);
     }
+
     @Test
     void shouldSetCurrentVolumeMoreMax() {
         SmartRadio smart = new SmartRadio();
@@ -192,6 +209,7 @@ class SmartRadioTest {
 
         assertEquals(expected, actual);
     }
+
     @Test
     void shouldSetCurrentVolumeLessMin() {
         SmartRadio smart = new SmartRadio();
@@ -202,6 +220,7 @@ class SmartRadioTest {
 
         assertEquals(expected, actual);
     }
+
     @Test
     void shouldIncreaseVolume() {
         SmartRadio smart = new SmartRadio();
@@ -213,6 +232,7 @@ class SmartRadioTest {
 
         assertEquals(expected, actual);
     }
+
     @Test
     void shouldIncreaseVolumeMax() {
         SmartRadio smart = new SmartRadio();
@@ -224,6 +244,7 @@ class SmartRadioTest {
 
         assertEquals(expected, actual);
     }
+
     @Test
     void shouldReduceVolume() {
         SmartRadio smart = new SmartRadio();
@@ -235,6 +256,7 @@ class SmartRadioTest {
 
         assertEquals(expected, actual);
     }
+
     @Test
     void shouldReduceVolumeMin() {
         SmartRadio smart = new SmartRadio();
@@ -259,5 +281,5 @@ class SmartRadioTest {
         assertEquals(expected, actual);
 
 
-        }
     }
+}
