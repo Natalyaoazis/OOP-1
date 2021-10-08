@@ -1,126 +1,63 @@
 package ru.netology.radio;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-@AllArgsConstructor
-@Data
-@NoArgsConstructor
-
 public class SmartRadio {
-    private int currentNumberRadioByDefault;
-    private int currentVolume;
     private int minNumberRadio = 0;
-    private int maxNumberRadioByDefault = 9;
+    private int maxNumberRadio = 9;
+    private int countRadioStation;
+    public int currentRadio;
     private int minVolume = 0;
     private int maxVolume = 100;
-    private int countRadioStation = 100;
-    private int maxNumberRadioStation = countRadioStation - 1;
-    private int currentNumberRadioByHand;
+    private int currentVolume;
+
 
     public SmartRadio(int countRadioStation) {
         this.countRadioStation = countRadioStation;
-    }
-
-    public int SetCurrentStation(int newStation) {
-        if (newStation < minNumberRadio) {
-            newStation = maxNumberRadioStation;
-        }
-        if (newStation > maxNumberRadioStation) {
-            newStation = minNumberRadio;
-        }
-        return newStation;
-    }
-
-
-    public void nextStation() {
-        if (currentNumberRadioByHand < maxNumberRadioStation) {
-            currentNumberRadioByHand = currentNumberRadioByHand + 1;
-        } else currentNumberRadioByHand = currentNumberRadioByHand;
     }
 
     public int getCountRadioStation() {
         return countRadioStation;
     }
 
-    public int getCurrentNumberRadioByHand() {
-        return currentNumberRadioByHand;
-    }
-
     public void setCountRadioStation(int countRadioStation) {
         this.countRadioStation = countRadioStation;
     }
 
-    public void setCurrentNumberRadioByHand(int currentNumberRadioByHand) {
-        this.currentNumberRadioByHand = currentNumberRadioByHand;
+    public void setCurrentRadio(int currentRadio) {
+        this.currentRadio = currentRadio;
     }
 
-    public void increaseNumberRadioByHand() {
-        if (currentNumberRadioByHand > minNumberRadio) {
-            this.currentNumberRadioByHand = currentNumberRadioByHand += 1;
+    public int getCurrentRadio() {
+        return currentRadio;
+    }
+
+
+    public void nextStation() {
+        if (currentRadio <= minNumberRadio) {
+            this.currentRadio = countRadioStation;
+        } else
+            this.currentRadio = currentRadio + 1;
+    }
+
+    public void nextStationOver() {
+        if (currentRadio >= countRadioStation) {
+            this.currentRadio = minNumberRadio;
         }
+        else
+            this.currentRadio = currentRadio + 1;
     }
 
-
-    public void increaseNumberRadioByHandOver() {
-        if (currentNumberRadioByHand > countRadioStation) {
-            this.currentNumberRadioByHand = minNumberRadio;
-        }
+    public void decreaseStation() {
+        if (currentRadio <= minNumberRadio) {
+            currentRadio = countRadioStation;
+        } else
+            this.currentRadio = currentRadio - 1;
     }
 
-    public void reduceNumberRadioByHand() {
-        if (currentNumberRadioByHand > minNumberRadio) {
-            this.currentNumberRadioByHand = currentNumberRadioByHand - 1;
-        }
-    }
-
-    public void reduceNumberRadioByHandOver() {
-        if (currentNumberRadioByHand < minNumberRadio) {
-            this.currentNumberRadioByHand = maxNumberRadioStation;
-        }
-    }
-
-    public void setCurrentNumberRadio(int currentNumberRadioByDefault) {
-        if (currentNumberRadioByDefault < minNumberRadio) {
-            this.currentNumberRadioByDefault = maxNumberRadioByDefault;
-            return;
-        }
-        if (currentNumberRadioByDefault > maxNumberRadioByDefault) {
-            this.currentNumberRadioByDefault = minNumberRadio;
-            return;
-        }
-        this.currentNumberRadioByDefault = currentNumberRadioByDefault;
-    }
-
-    public int increaseNumberRadio() {
-        if (currentNumberRadioByDefault < maxNumberRadioByDefault) {
-            this.currentNumberRadioByDefault = currentNumberRadioByDefault + 1;
-        } else {
-            this.currentNumberRadioByDefault = minNumberRadio;
-        }
-        return currentNumberRadioByDefault;
-    }
-
-
-    public void reduceNumberRadio() {
-        if (currentNumberRadioByDefault > minNumberRadio) {
-            this.currentNumberRadioByDefault = currentNumberRadioByDefault - 1;
-        } else {
-            currentNumberRadioByDefault = maxNumberRadioByDefault;
-        }
-    }
-
-    public int getCurrentNumberRadio() {
-        return currentNumberRadioByDefault;
-    }
-
-    public int getMaxNumberRadio() {
-        return maxNumberRadioByDefault;
-    }
-
-    public int getMinNumberRadio() {
-        return minNumberRadio;
+    public void decreaseStationOver() {
+        if (currentRadio >= countRadioStation) {
+            currentRadio = minNumberRadio;
+        } else
+            this.currentRadio = currentRadio - 1;
     }
 
 
@@ -149,5 +86,7 @@ public class SmartRadio {
     public int getCurrentVolume() {
         return currentVolume;
     }
-
 }
+
+
+
