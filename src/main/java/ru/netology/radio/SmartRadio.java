@@ -2,9 +2,9 @@ package ru.netology.radio;
 
 public class SmartRadio {
     private int minNumberRadio = 0;
-    private int maxNumberRadio = 9;
-    private int countRadioStation;
-    public int currentRadio;
+    private int countRadioStation = 10;
+    private int maxNumberRadio = countRadioStation - 1;
+    public int currentRadio = 5;
     private int minVolume = 0;
     private int maxVolume = 100;
     private int currentVolume;
@@ -12,63 +12,64 @@ public class SmartRadio {
 
     public SmartRadio(int countRadioStation) {
         this.countRadioStation = countRadioStation;
+        this.maxNumberRadio = countRadioStation - 1;
     }
 
-    public int getCountRadioStation() {
-        return countRadioStation;
-    }
-
-    public void setCountRadioStation(int countRadioStation) {
-        this.countRadioStation = countRadioStation;
+    public SmartRadio() {
     }
 
     public void setCurrentRadio(int currentRadio) {
-        this.currentRadio = currentRadio;
+        if (currentRadio > maxNumberRadio) {
+            this.currentRadio = maxNumberRadio;
+            return;
+        }
+        if (currentRadio < minNumberRadio) {
+            this.currentRadio = minNumberRadio;
+        }
     }
 
     public int getCurrentRadio() {
         return currentRadio;
     }
 
-
-    public void nextStation() {
-        if (currentRadio <= minNumberRadio) {
-            this.currentRadio = countRadioStation;
-        } else
-            this.currentRadio = currentRadio + 1;
+    public int getMaxNumberRadio() {
+        return maxNumberRadio;
     }
 
-    public void nextStationOver() {
-        if (currentRadio >= countRadioStation) {
+    public int getMinNumberRadio() {
+        return minNumberRadio;
+    }
+
+    public void setNextStation() {
+        if (currentRadio < maxNumberRadio) {
+            this.currentRadio = currentRadio += 1;
+        } else {
             this.currentRadio = minNumberRadio;
         }
-        else
-            this.currentRadio = currentRadio + 1;
     }
 
-    public void decreaseStation() {
-        if (currentRadio <= minNumberRadio) {
-            currentRadio = countRadioStation;
-        } else
-            this.currentRadio = currentRadio - 1;
+    public void setPreviousStation() {
+        if (currentRadio > minNumberRadio) {
+            this.currentRadio = currentRadio -= 1;
+        } else {
+            currentRadio = maxNumberRadio;
+        }
     }
 
-    public void decreaseStationOver() {
-        if (currentRadio >= countRadioStation) {
-            currentRadio = minNumberRadio;
-        } else
-            this.currentRadio = currentRadio - 1;
-    }
+    // Звук
 
-
-    public void setCurrentVolume(int newVolume) {
-        if (newVolume < minVolume) {
+    public void setCurrentVolume(int currentVolume) {
+        if (currentVolume > maxVolume) {
             return;
         }
-        if (newVolume > maxVolume) {
+        if (currentVolume < minVolume) {
             return;
         }
-        this.currentVolume = newVolume;
+        this.currentVolume = currentVolume;
+    }
+
+    public int getCurrentVolume() {
+        return currentVolume;
     }
 
     public void increaseVolume() {
@@ -81,10 +82,6 @@ public class SmartRadio {
         if (currentVolume > minVolume) {
             currentVolume = currentVolume - 1;
         }
-    }
-
-    public int getCurrentVolume() {
-        return currentVolume;
     }
 }
 

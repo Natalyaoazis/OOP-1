@@ -52,7 +52,7 @@
                         </goals>
                     </execution>
                     <execution>
-                        <id>report-33335566</id>
+                        <id>report</id>
                         <phase>verify</phase>
                         <goals>
                             <goal>report</goal>
